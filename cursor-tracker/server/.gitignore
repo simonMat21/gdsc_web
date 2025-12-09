@@ -1,0 +1,17 @@
+# Server-specific .gitignore
+
+node_modules/
+package-lock.json
+npm-debug.log
+dist/
+build/
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
