@@ -1,4 +1,4 @@
-# Root .gitignore
+# Combined .gitignore
 
 # Dependencies
 node_modules/
@@ -16,7 +16,6 @@ yarn.lock
 *.swp
 *.swo
 *~
-.DS_Store
 
 # Build outputs
 dist/
@@ -41,6 +40,6 @@ coverage/
 # Docker
 .dockerignore
 
-# Documentation (except README)
-*.md
-!README.md
+# TypeScript
+*.tsbuildinfo
+
