@@ -19,18 +19,18 @@ A real-time collaborative dashboard where 10+ users see each other's cursors mov
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     Browser 1 (Next.js)                     │
-│ ┌──────────────┐  ┌──────────────┐  ┌─────────────────────┐│
-│ │ CursorLayer  │  │ ObjectLayer  │  │ Animation Loop (RAF)││
-│ │ - Track mouse│  │ - Drag objs  │  │ - Interpolate (LERP)││
-│ │ - Throttle   │  │ - Pickup     │  │ - Render canvas     ││
-│ │ - Emit       │  │ - Drop       │  │ - 60fps smooth      ││
-│ └──────┬───────┘  └──────┬───────┘  └────────────┬────────┘│
-│        │                 │                       │         │
-│        └─────────────────┼───────────────────────┘         │
+│ ┌──────────────┐  ┌──────────────┐  ┌─────────────────────┐ │
+│ │ CursorLayer  │  │ ObjectLayer  │  │ Animation Loop (RAF)│ │
+│ │ - Track mouse│  │ - Drag objs  │  │ - Interpolate (LERP)│ │
+│ │ - Throttle   │  │ - Pickup     │  │ - Render canvas     │ │
+│ │ - Emit       │  │ - Drop       │  │ - 60fps smooth      │ │
+│ └──────┬───────┘  └──────┬───────┘  └────────────┬────────┘ │
+│        │                 │                       │          │
+│        └─────────────────┼───────────────────────┘          │
 │                          │                                  │
 │                   Socket.IO Client                          │
 │                    (50ms throttle)                          │
-└──────────────────────────┬─────────────────────────────────┘
+└──────────────────────────┬─────────────────────────────────-┘
                            │
                 ┌──────────┴──────────┐
                 │   WebSocket on      │
@@ -38,20 +38,20 @@ A real-time collaborative dashboard where 10+ users see each other's cursors mov
                 └──────────┬──────────┘
                            │
 ┌──────────────────────────┴─────────────────────────────────┐
-│              Node.js + Express + Socket.IO                  │
+│              Node.js + Express + Socket.IO                 │
 │ ┌────────────────────────────────────────────────────────┐ │
 │ │ State Management                                       │ │
-│ │ - users: Map<socketId, {id, x, y, color, name}>    │ │
-│ │ - objects: Map<objId, {x, y, ownerId}>             │ │
+│ │ - users: Map<socketId, {id, x, y, color, name}>        │ │
+│ │ - objects: Map<objId, {x, y, ownerId}>                 │ │
 │ └────────────────────────────────────────────────────────┘ │
 │ ┌────────────────────────────────────────────────────────┐ │
 │ │ Socket Event Handlers                                  │ │
-│ │ - join: Init new user                                 │ │
-│ │ - cursor_move: Receive throttled updates              │ │
-│ │ - pickup/drop: Object ownership                       │ │
-│ │ - disconnect: Cleanup                                 │ │
+│ │ - join: Init new user                                  │ │
+│ │ - cursor_move: Receive throttled updates               │ │
+│ │ - pickup/drop: Object ownership                        │ │
+│ │ - disconnect: Cleanup                                  │ │
 │ └────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────--┘
 ```
 
 ---
